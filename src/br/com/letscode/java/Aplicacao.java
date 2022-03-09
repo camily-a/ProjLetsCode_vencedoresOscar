@@ -23,6 +23,7 @@ public class Aplicacao {
         app.buscaAtorAtriz("Tom Hanks");
 
 
+
     }
 
     List<Oscar> lista = new ArrayList<>();
@@ -34,13 +35,14 @@ public class Aplicacao {
         try (Stream<String> lines = Files.lines(Path.of(path))) {
             this.lista = lines.skip(1)
                     .map(Oscar::fromLine)
-                    .collect(Collectors.toList());// Java 11
+                    .collect(Collectors.toList());
+
+            return this.lista;
 
         } catch (IOException e) {
             e.printStackTrace();
+            return Collections.emptyList();
         }
-
-        return this.lista;
     }
 
     private void listaCompleta() {
@@ -106,7 +108,7 @@ public class Aplicacao {
         .sorted(Comparator.comparingInt(Oscar::getAno))
         .collect(Collectors.toList());
 
-        System.out.print(nome.toUpperCase(Locale.ROOT) + " foi premiado(a) " + resBusca.size() + " vezes : \n");
+        System.out.print(nome.toUpperCase() + " foi premiado(a) " + resBusca.size() + " vezes : \n");
         resBusca.forEach(x -> System.out.println("Em " + x.getAno() +
                 ", aos " + x.getIdade() + " anos de idade por sua atuação no filme '" + x.getFilme()+ "'"));
         System.out.print("\n");

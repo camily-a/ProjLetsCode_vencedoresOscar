@@ -9,7 +9,7 @@ public class Oscar {
     private String nome;
     private String filme;
 
-    public Oscar(int ano, int idade, String nome, String filme) {
+    private Oscar(int ano, int idade, String nome, String filme) {
         this.ano = ano;
         this.idade = idade;
         this.nome = nome;
@@ -33,7 +33,7 @@ public class Oscar {
     }
 
     public static Oscar fromLine(String line) {
-        String[] split = line.split("; ");
+        String[] split = line.split(";\\s");
         return new Oscar(
                 parseInt(split[1]),
                 parseInt(split[2]),
