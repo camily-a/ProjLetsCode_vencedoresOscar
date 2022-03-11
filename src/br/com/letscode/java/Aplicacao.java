@@ -22,7 +22,7 @@ public class Aplicacao {
 
     }
 
-    public void atorMaisJovemAGanharOscar() {
+    private void atorMaisJovemAGanharOscar() {
         LeituraArquivo la = new LeituraArquivo("files/oscar_age_male.csv");
         System.out.print("O ator mais jovem a ganhar o Oscar é ");
         la.getlista().stream()
@@ -32,7 +32,7 @@ public class Aplicacao {
 
     }
 
-    public void atrizMaisPremiada() {
+    private void atrizMaisPremiada() {
         LeituraArquivo la = new LeituraArquivo("files/oscar_age_female.csv");
         System.out.print("A atriz mais premiada é ");
         la.getlista().stream()
@@ -43,7 +43,7 @@ public class Aplicacao {
                 .ifPresent(x -> System.out.println(x.getKey() + " com um total de " + x.getValue() + " premiações. \n"));
     }
 
-    public void atrizEntre20e30maisPremiada() {
+    private void atrizEntre20e30maisPremiada() {
         LeituraArquivo la = new LeituraArquivo("files/oscar_age_female.csv");
         System.out.print("A atriz com mais premiações entre 20 e 30 anos é ");
         la.getlista().stream()
@@ -55,7 +55,7 @@ public class Aplicacao {
                 .ifPresent(x -> System.out.println(x.getKey() + " com um total de " + x.getValue() + " premiações. \n "));
     }
 
-    public void atoresEAtrizesQueReceberamMaisDeUmOscar() {
+    private void atoresEAtrizesQueReceberamMaisDeUmOscar() {
         LeituraArquivo la = new LeituraArquivo("listaCompleta");
         System.out.print("Os atores ou atrizes que receberam mais de um Oscar são: \n");
         var NomesEqtdPremiacoes = la.getlista().stream()
@@ -70,7 +70,7 @@ public class Aplicacao {
         System.out.println("\n");
     }
 
-    public void buscaAtorAtriz(String nome) {
+    private void buscaAtorAtriz(String nome) {
         LeituraArquivo la = new LeituraArquivo("listaCompleta");
         var resBusca = la.getlista().stream()
                 .filter( linha -> linha.getNome().equals(nome))
